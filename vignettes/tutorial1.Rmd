@@ -143,6 +143,17 @@ tm_shape(metro) +
 
 
 ### 3.1 Getting started with raster maps
+```{r eval=TRUE}
+
+data(land)
+
+class(land)
+
+tm_shape(land) + 
+    tm_raster("trees", breaks=seq(0, 100, by=20)) #, legend.show = FALSE)
+
+```
+
 
 ### 3.2 Experimenting with raster maps
 
