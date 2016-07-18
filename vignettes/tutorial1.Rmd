@@ -143,14 +143,48 @@ tm_shape(metro) +
 
 
 ### 3.1 Getting started with raster maps
+
 ```{r eval=TRUE}
 
 data(land)
 
 class(land)
 
+#aha! land is actually a sgdf
+#[1] "SpatialGridDataFrame"
+#attr(,"package")
+#[1] "sp"
+
+str(land@data)
+
 tm_shape(land) + 
-    tm_raster("trees", breaks=seq(0, 100, by=20)) #, legend.show = FALSE)
+    tm_raster("trees", breaks=seq(0, 100, by=20) )
+
+tm_shape(land) + 
+    tm_raster("trees", breaks=seq(0, 100, by=50) )
+
+# categorical land cover
+tm_shape(land) + 
+    tm_raster("cover")
+
+# using faceting
+
+# facet by cover to get one map for each cover type
+tm_shape(land) + 
+    tm_raster("cover", legend.show = FALSE) +
+    tm_facets("cover", free.coords=TRUE, drop.units=TRUE)   
+
+
+# facet by country to get one cover map per country
+tm_shape(land) + 
+    tm_raster("cover") + # , legend.show = FALSE)
+tm_shape(Europe[which(Europe$part=="Northern Europe"),]) +
+    tm_borders() +
+    tm_facets("name", free.coords = TRUE)
+
+
+
+
 
 ```
 
@@ -159,14 +193,41 @@ tm_shape(land) +
 
 
 ### 4 Using your own data
-You can use both your own geometry and/or attribute data in tmap.
+You can use both your own geometry and/or attribute data in tmap and other mapping options.
+
+```{r eval=TRUE}
+
+# create a very simple data frame as an example
+dF <- data.frame( country=c("Spain", "United Kingdom"),
+                  weather=c("hot", "cold") )
+
+# tmap can join this onto a map (other options are available too)
+Eu_and_dat <- append_data(Europe, dF, key.shp="name", key.data="country")
+
+tm_shape(Eu_and_dat) +
+  tm_fill("weather", palette=c("red","blue"))
+
+# Can you plot some other data by country ?
+# remember the country names in the map are in Europe$name
+# I could maybe give example with data from gapmindr or worldbank packages
+
+
+```
 
 
 ### 5 Interactivity (with leaflet &/or tmap)
 
 
 ### 6 Putting it all together or experiment with anything
-...
+```{r eval=TRUE}
+# to list datasets in the tmap package
+data(package="tmap")
+
+# list data in raster package
+data(package="raster")
+
+```
+
 
 
 ###TODO
