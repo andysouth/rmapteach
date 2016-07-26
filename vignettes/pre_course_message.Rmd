@@ -1,0 +1,40 @@
+---
+title: "pre course message"
+author: "andy south"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Hello All,
+
+I'm looking forward to teaching the course next week.
+
+It's fine that we will have participants with different existing experience with R and there will be material for different levels. I'll encourage you to take things at your own pace with plenty of hands-on time.
+
+However, that said, I will not have time in the session to address issues about installing R, RStudio or the recomended packages. You'll need to get that done beforehand.
+
+So, before the course could you do the following A) Essential and B) Helpful things :
+
+A) Essential
+Have R and RStudio installed (links from here : https://www.rstudio.com/online-learning/#R)
+
+Be familiar with R basics OR have gone through chapters 1 & 2 at http://tryr.codeschool.com/
+
+Install these packages with this command from R :
+install.packages(c("ggplot2","tmap","leaflet"), dependencies=TRUE)
+
+
+B) Helpful for more advanced
+
+You have the latest version of R (3.3.1)
+
+If you are bringing your own data, have it already read into R (using read.csv or similar) as a dataframe with named columns. I will have limited time to address data import or formatting issues. There will be example data for you to work with too.
+
+
+Best wishes,
+Andy
+
