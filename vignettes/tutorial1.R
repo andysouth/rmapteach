@@ -1,31 +1,13 @@
----
-title: "Software Sustainability Hands-on"
-author: "andy south"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-#output: rmarkdown::pdf_document
-vignette: >
-  %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
+## ----eval=FALSE, tidy=FALSE----------------------------------------------
+#  #first install devtools to enable install from GitHub
+#  install.packages("devtools")
+#  library(devtools)
+#  install_github('AndySouth/rmapteach')
 
+## ----eval=TRUE-----------------------------------------------------------
+library("rmapteach")
 
-This tutorial will be about you doing stuff. I will get you to try things probably before you understand fully what they are. Worry not.
-
-1.  It doesn't matter if you make mistakes.
-1.  We will come back to some of the concepts later.
-1.  Questions are encouraged.
-1.  This should at least give you a start to follow up on later.
-
-The beauty (& sometimes otherwise) of R is that there are usually multiple ways of doing the same thing. Here I will show some modern ways you may later find that other ways are more suited to you.
-
-We will mostly start looking at ggplot2 by Hadley Wickham. This is a newer alternative to base graphics. Base graphics are still useful for creating highly customised plots but we will not look at them here.
-
-
-### A) point plots with ggplot2 first go
-
-```{r eval=TRUE}
+## ----eval=TRUE-----------------------------------------------------------
 
 # load the package
 library("ggplot2")
@@ -43,7 +25,6 @@ ggplot(data = msleep, aes(x = bodywt, y = awake)) +
 
 # aes (for aesthetic) sets up links between the data and aspects of the plot
 # + adds layers to the plot, in this case points
-# geom* stands for the geometric objects you can add to a plot
 # bodywt and awake are columns within the data
 
 # add an extra column to the aes
@@ -54,64 +35,31 @@ ggplot(data = msleep, aes(x = bodywt, y = awake, col = vore)) +
 ggplot(data = msleep, aes(x = bodywt, y = awake, col = sleep_rem)) +
     geom_point()
 
-# you can store the plot as an object (in this case called p) which can make modifying it easier
-p <- ggplot(data = msleep, aes(x = bodywt, y = awake, col = sleep_rem))
-p <- p + geom_point()
-# type the variable name to display the plot 
-p
 
-```
-
-### A1) Exercise
-Have a quick look at the online ggplot2 documentation here : http://docs.ggplot2.org/current/ 
-Particularly look at geom_point and scroll down to the examples.
-
-From within R you can get similar help but without the helpful plots by :
-`?geom_point`
-
-Try modifying a point plot with the msleep data.
-
-
-### point plots, modifying axes, label points, divide into subplots
-
-```{r eval=TRUE}
+## ----eval=TRUE-----------------------------------------------------------
 
 # we can log bodywt to space the points out more
-p <- ggplot(data = msleep, aes(x = log(bodywt), y = awake, col = vore)) +
-     geom_point()
-p
+ggplot(data = msleep, aes(x = log(bodywt), y = awake, col = vore)) +
+    geom_point()
 
 # label the points for data exploration
-p <- ggplot(data = msleep, aes(x = log(bodywt), y = awake, label = name)) +
-     geom_point() + 
-     geom_text()
-p
+ggplot(data = msleep, aes(x = log(bodywt), y = awake, label = name)) +
+    geom_point() + 
+    geom_text()
 
 # divide into subplots using facet_wrap()
-p<- ggplot(data = msleep, aes(x = log(bodywt), y = awake, label = name)) +
+ggplot(data = msleep, aes(x = log(bodywt), y = awake, label = name)) +
     geom_point() + 
     facet_wrap(~vore)
-p
-
-``` 
 
 
+## ----eval=FALSE----------------------------------------------------------
+#  install.packages("tmap")
 
-
-
-### 1 maps
-
-Install and load the tmap package
-```{r eval=FALSE}
-install.packages("tmap")
-```
-
-```{r eval=TRUE}
+## ----eval=TRUE-----------------------------------------------------------
 library("tmap")
-```
 
-### 1.1 Getting started with polygon maps
-```{r eval=TRUE}
+## ----eval=TRUE-----------------------------------------------------------
 
 # load data from tmap
 data(Europe)
@@ -164,25 +112,18 @@ tm_shape(Europe) +
 # you can find this out by typing
 class(Europe)
 
-```
 
-### 1.2 Exercise : can you plot different areas, different variables, different colours ...
+## ----eval=FALSE----------------------------------------------------------
+#  # to see help use '?'
+#  ?tm_fill
+#  
+#  # syntax is like ggplot2 (e.g. + to add layers)
+#  
+#  # start with one of the code examples above and change something ...
+#  
+#  
 
-```{r eval=FALSE}
-# to see help use '?'
-?tm_fill
-
-# syntax is like ggplot2 (e.g. + to add layers)
-
-# start with one of the code examples above and change something ...
-
-
-```
-
-
-
-### 2.1 Getting started with point maps
-```{r eval=TRUE}
+## ----eval=TRUE-----------------------------------------------------------
 
 # load some tmap point data for metropolitan areas
 data(metro)
@@ -201,16 +142,8 @@ tm_shape(Europe) +
 tm_shape(metro) + 
   tm_bubbles("pop2010")
 
-```
 
-### 2.2 Exercise - can you cahnge one of the point maps ?
-
-
-
-
-### 3.1 Getting started with raster maps
-
-```{r eval=TRUE}
+## ----eval=TRUE-----------------------------------------------------------
 
 # load some data from tmap
 data(land)
@@ -244,15 +177,8 @@ tm_shape(Europe[which(Europe$part=="Northern Europe"),]) +
     tm_borders() +
     tm_facets("name", free.coords = TRUE)
 
-```
 
-
-
-
-### 4 Using your own data
-You can use both your own geometry and/or attribute data in tmap and other mapping options.
-
-```{r eval=TRUE}
+## ----eval=TRUE-----------------------------------------------------------
 
 # create a very simple data frame as an example
 dF <- data.frame( country=c("Spain", "United Kingdom"),
@@ -264,56 +190,30 @@ Eu_and_dat <- append_data(Europe, dF, key.shp="name", key.data="country")
 tm_shape(Eu_and_dat) +
   tm_fill("weather", palette=c("red","blue"))
 
-```
-
-### 4 Exercise
-```{r eval=FALSE}
-
 # Can you plot some other data by country ?
-# remember the country names in the tmap map are in Europe$name
-install.packages("gapminder")
-library(gapminder)
-?gapminder
-str(gapminder)
-
-Eu_and_gap <- append_data(Europe, gapminder[gapminder$year==2007,], key.shp="name", key.data="country")
-
-tm_shape(Eu_and_gap) +
-   tm_fill("lifeExp")
-
-```
-
-### 5 Interactivity (with leaflet &/or tmap)
+# remember the country names in the map are in Europe$name
+# TODO me to add getting data from another package
 
 
-### 6 Putting it all together or experiment with other options
-```{r eval=TRUE}
+
+## ----eval=TRUE-----------------------------------------------------------
 # to list datasets in the tmap package
 data(package="tmap")
 
 
 
-```
 
-### 7 Going further
-```{r eval=FALSE}
-# other useful packages, resources
-
-# raster package
-library(raster)
-
-# rmapshaper for simplifying polygon boundaries
-library(rmapshaper)
-
-
-
-
-
-```
-
-
-###TODO
-~ acknowledge Martijn
-~ say I wrote an older package to do this kind of thing but tmap is newer & better (in almost all respects)
-
+## ----eval=FALSE----------------------------------------------------------
+#  # other useful packages, resources
+#  
+#  # raster package
+#  library(raster)
+#  
+#  # rmapshaper for simplifying polygon boundaries
+#  library(rmapshaper)
+#  
+#  
+#  
+#  
+#  
 

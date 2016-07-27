@@ -3,6 +3,7 @@ title: "pre course message"
 author: "andy south"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+#output: rmarkdown::pdf_document
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
   %\VignetteEngine{knitr::rmarkdown}
@@ -37,4 +38,12 @@ If you are bringing your own data, have it already read into R (using read.csv o
 
 Best wishes,
 Andy
+
+
+Me to do before the session :
+1. add advanced exercises to stretch the experienced
+1. put url of the pdf or html into a slide
+1. maybe create a few slides
+
+
 
