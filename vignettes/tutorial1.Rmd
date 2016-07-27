@@ -2,8 +2,8 @@
 title: "Software Sustainability Hands-on"
 author: "andy south"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-#output: rmarkdown::pdf_document
+#output: rmarkdown::html_vignette
+output: rmarkdown::pdf_document
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
   %\VignetteEngine{knitr::rmarkdown}
@@ -22,6 +22,9 @@ The beauty (& sometimes otherwise) of R is that there are usually multiple ways 
 
 We will mostly start looking at ggplot2 by Hadley Wickham. This is a newer alternative to base graphics. Base graphics are still useful for creating highly customised plots but we will not look at them here.
 
+*  A,B,C ... ggplot    
+*  1,2,3 ... maps    
+*  At the end ... going further    
 
 ### A) point plots with ggplot2 first go
 
@@ -60,6 +63,10 @@ p <- p + geom_point()
 # type the variable name to display the plot 
 p
 
+# use themes to change the overall appearance of plots
+# note that when typing this in RStudio it will show you the options once you've typed th...
+p + theme_bw()
+
 ```
 
 ### A1) Exercise
@@ -72,7 +79,8 @@ From within R you can get similar help but without the helpful plots by :
 Try modifying a point plot with the msleep data.
 
 
-### point plots, modifying axes, label points, divide into subplots
+
+### B) point plots, modifying axes, label points, divide into subplots
 
 ```{r eval=TRUE}
 
@@ -88,15 +96,93 @@ p <- ggplot(data = msleep, aes(x = log(bodywt), y = awake, label = name)) +
 p
 
 # divide into subplots using facet_wrap()
-p<- ggplot(data = msleep, aes(x = log(bodywt), y = awake, label = name)) +
+p <- ggplot(data = msleep, aes(x = log(bodywt), y = awake, label = name)) +
     geom_point() + 
     facet_wrap(~vore)
 p
+
+
 
 ``` 
 
 
 
+### C) line plots with ggplot2
+```{r eval=TRUE}
+
+#load some time-series data from ggplot2
+data(economics)
+
+# to show the 'str'ucture of the data
+str(economics)
+
+# geom_line()
+ggplot(economics, aes(date, unemploy)) + geom_line()
+
+#note that above aes(date, unemploy) assumes that these are to set x & y respectively
+# this : aes(x=date, y=unemploy) would give an identical result
+
+# another dataset economics_long is in 'long' format
+# instead of having one column for each attribute (e.g. pop and unemploy)
+# it has a column (variable) which has a repeated factor values for each date
+# this allows us to create a plot with multiple lines 
+
+data(economics_long)
+
+ggplot(economics_long, aes(date, value01, colour = variable)) +
+  geom_line()
+
+#note that for each variable the value01 column has been scaled between 0 & 1 to fit on same scale
+
+
+# geom_path can be used to look at the relationship of 2 variables over time
+# unemployment and savings rate
+p <- ggplot(economics, aes(unemploy/pop, psavert))
+p + geom_path(aes(colour = date))
+
+# note how the unemployment rate is calculated by unemploy/pop within the aes call
+# you can do other calculations between columns in there 
+
+```
+
+### C1) Exercise
+
+Try using facet\_wrap with the economics\_long line plot to get subplots for each variable.
+
+...
+
+
+### D) bigger (but still small!) data, histograms etc.
+```{r eval=TRUE}
+
+# the diamonds dataset has > 50K diamonds (rows) in it
+
+data(diamonds)
+str(diamonds)
+
+# a scatter plot is not very informative
+p <- ggplot(diamonds, aes(x = carat, y = price, col = color))
+p + geom_point()
+
+# setting the alpha (transparency) level to < 1 can improve things but not much
+p <- ggplot(diamonds, aes(x = carat, y = price, col = color))
+p <- p + geom_point(alpha=0.3)
+
+# geom_smooth adds a smoothed conditional mean which can help reveal patterns
+p + geom_smooth()
+
+# geom_histogram can be used to look at distributions 
+p <- ggplot(data=diamonds) + geom_histogram(aes(x=price))
+p
+
+# most of the diamonds are cheap ! (relatively)
+
+```
+
+### D1) Exercise 
+Use any of your ggplot skills to find out something interesting about diamonds ...
+
+...
 
 
 ### 1 maps
@@ -286,34 +372,30 @@ tm_shape(Eu_and_gap) +
 ### 5 Interactivity (with leaflet &/or tmap)
 
 
-### 6 Putting it all together or experiment with other options
-```{r eval=TRUE}
-# to list datasets in the tmap package
-data(package="tmap")
 
-
-
-```
-
-### 7 Going further
+### Going further
 ```{r eval=FALSE}
 # other useful packages, resources
 
-# raster package
+# packages for creating the circular migration plots I showed this morning
+install.packages("migest")
+install.packages("circlize")
+
+
+# raster package, great for mapping satellite data etc.
+install.packages("raster")
 library(raster)
 
 # rmapshaper for simplifying polygon boundaries
+install.packages("rmapshaper")
 library(rmapshaper)
 
 
 
-
-
 ```
 
 
-###TODO
-~ acknowledge Martijn
-~ say I wrote an older package to do this kind of thing but tmap is newer & better (in almost all respects)
+### Acknowledgements :
+Thankyou to all the package developers on whose work this tutorial is based.
 
 

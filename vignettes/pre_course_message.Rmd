@@ -40,10 +40,33 @@ Best wishes,
 Andy
 
 
-Me to do before the session :
+### Me to do before the session :
+1. add exercises to the maps section
+1. add to or delete the interactivity section
 1. add advanced exercises to stretch the experienced
 1. put url of the pdf or html into a slide
 1. maybe create a few slides
+1. sort traffic light slide in my talk
+
+
+### To say at the start of the session
+1. I will inevitably assume that you know things that you don't, and at some points will assume that you don't know things that you do. I apologise and do feel free to point this out to me.
+1. You don't have to keep all this stuff in your head. Just 2 days ago Hadley Wickham tweeted that he can't code without access to the internet to look stuff up. Stackoverflow is amazing.  I (and others) have looked up things on there only to find I answered the question myself a few years ago.
+1. I tend to follow a trial and error approach, I don't fully understand everything that I'm doing
+
+
+### To demonstrate in live coding session
+1. RStudio
+  - Environment tab top right, viewing objects
+  - History tab top right, previous commands
+  - Files, Packages, Help tabs lower right
+1. code completion in RStudio, tab for help about function args
+1. help with ?
+1. some common errors, e.g using "" when shouldn't and vice verca
+1. copy & pasting from the course html
+
+
+  
 
 
 
