@@ -189,7 +189,6 @@ class(Europe)
 #  
 #  # start with one of the code examples above and change something ...
 #  
-#  
 
 ## ----eval=TRUE-----------------------------------------------------------
 
@@ -263,6 +262,8 @@ tm_shape(Eu_and_dat) +
 #  
 #  # Can you plot some other data by country ?
 #  # remember the country names in the tmap map are in Europe$name
+#  
+#  # the gapminder package contains some country data
 #  install.packages("gapminder")
 #  library(gapminder)
 #  ?gapminder
@@ -277,10 +278,13 @@ tm_shape(Eu_and_dat) +
 ## ----eval=FALSE----------------------------------------------------------
 #  # other useful packages, resources
 #  
+#  # a new package for getting world bank data
+#  install.packages("wbstats")
+#  # http://www.r-bloggers.com/new-r-package-to-access-world-bank-data/
+#  
 #  # packages for creating the circular migration plots I showed this morning
 #  install.packages("migest")
 #  install.packages("circlize")
-#  
 #  
 #  # raster package, great for mapping satellite data etc.
 #  install.packages("raster")
@@ -290,6 +294,8 @@ tm_shape(Eu_and_dat) +
 #  install.packages("rmapshaper")
 #  library(rmapshaper)
 #  
+#  # leaflet a package for creating interactive maps
+#  install.packages("leaflet")
 #  
 #  
 

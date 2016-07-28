@@ -18,13 +18,13 @@ This tutorial will be about you doing stuff. I will get you to try things probab
 1.  Questions are encouraged.
 1.  This should at least give you a start to follow up on later.
 
-The beauty (& sometimes otherwise) of R is that there are usually multiple ways of doing the same thing. Here I will show some modern ways you may later find that other ways are more suited to you.
+The beauty (& sometimes otherwise) of R is that there are usually multiple ways of doing the same thing. Here I will show some modern ways there are others.
 
-We will mostly start looking at ggplot2 by Hadley Wickham. This is a newer alternative to base graphics. Base graphics are still useful for creating highly customised plots but we will not look at them here.
+We will mostly start looking at ggplot2 by Hadley Wickham. This is a newer alternative to base graphics. Base graphics are still useful for creating customised plots but we will not look at them here.
 
 *  A,B,C ... ggplot    
 *  1,2,3 ... maps    
-*  At the end ... going further    
+*  At the end ... golden time & going further    
 
 ### A) point plots with ggplot2 first go
 
@@ -262,7 +262,6 @@ class(Europe)
 
 # start with one of the code examples above and change something ...
 
-
 ```
 
 
@@ -289,8 +288,9 @@ tm_shape(metro) +
 
 ```
 
-### 2.2 Exercise - can you cahnge one of the point maps ?
+### 2.2 Exercise - can you change one of the point maps ?
 
+...
 
 
 
@@ -335,7 +335,7 @@ tm_shape(Europe[which(Europe$part=="Northern Europe"),]) +
 
 
 
-### 4 Using your own data
+### 4 map your own data in tmap
 You can use both your own geometry and/or attribute data in tmap and other mapping options.
 
 ```{r eval=TRUE}
@@ -352,11 +352,13 @@ tm_shape(Eu_and_dat) +
 
 ```
 
-### 4 Exercise
+### 4.1 Exercise
 ```{r eval=FALSE}
 
 # Can you plot some other data by country ?
 # remember the country names in the tmap map are in Europe$name
+
+# the gapminder package contains some country data
 install.packages("gapminder")
 library(gapminder)
 ?gapminder
@@ -369,7 +371,9 @@ tm_shape(Eu_and_gap) +
 
 ```
 
-### 5 Interactivity (with leaflet &/or tmap)
+### 5 Golden time
+
+Take whatever you want from above and below, with your own data or the example datasets and play with it. Show your neighbour what you've done.
 
 
 
@@ -377,10 +381,13 @@ tm_shape(Eu_and_gap) +
 ```{r eval=FALSE}
 # other useful packages, resources
 
+# a new package for getting world bank data
+install.packages("wbstats")
+# http://www.r-bloggers.com/new-r-package-to-access-world-bank-data/
+
 # packages for creating the circular migration plots I showed this morning
 install.packages("migest")
 install.packages("circlize")
-
 
 # raster package, great for mapping satellite data etc.
 install.packages("raster")
@@ -390,6 +397,8 @@ library(raster)
 install.packages("rmapshaper")
 library(rmapshaper)
 
+# leaflet a package for creating interactive maps
+install.packages("leaflet")
 
 
 ```

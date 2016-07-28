@@ -44,9 +44,6 @@ Andy
 1. add exercises to the maps section
 1. add to or delete the interactivity section
 1. add advanced exercises to stretch the experienced
-1. put url of the pdf or html into a slide
-1. maybe create a few slides
-1. sort traffic light slide in my talk
 
 
 ### To say at the start of the session
@@ -64,6 +61,7 @@ Andy
 1. help with ?
 1. some common errors, e.g using "" when shouldn't and vice verca
 1. copy & pasting from the course html
+1. Help, cheatsheets ggplot2
 
 
   
