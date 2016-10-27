@@ -1,0 +1,65 @@
+---
+title: "pre course message"
+author: "andy south"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+#output: rmarkdown::pdf_document
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Hello All,
+
+I'm looking forward to teaching the course next week.
+
+It's fine that we will have participants with different existing experience with R and there will be material for different levels. I'll encourage you to take things at your own pace with plenty of hands-on time.
+
+However, that said, I will not have time in the session to address issues about installing R, RStudio or the recomended packages. You'll need to get that done beforehand.
+
+So, before the course could you do the following A) Essential and B) Helpful things :
+
+A) Essential
+Have R and RStudio installed (links from here : https://www.rstudio.com/online-learning/#R)
+
+Be familiar with R basics OR have gone through chapters 1 & 2 at http://tryr.codeschool.com/
+
+Install these packages with this command from R :
+install.packages(c("ggplot2","tmap","leaflet"), dependencies=TRUE)
+
+
+B) Helpful for more advanced
+
+You have the latest version of R (3.3.1)
+
+If you are bringing your own data, have it already read into R (using read.csv or similar) as a dataframe with named columns. I will have limited time to address data import or formatting issues. There will be example data for you to work with too.
+
+
+Best wishes,
+Andy
+
+
+
+### To say at the start of the session
+1. I will inevitably assume that you know things that you don't, and at some points will assume that you don't know things that you do. I apologise and do feel free to point this out to me.
+1. You don't have to keep all this stuff in your head. Just 2 days ago Hadley Wickham tweeted that he can't code without access to the internet to look stuff up. Stackoverflow is amazing.  I (and others) have looked up things on there only to find I answered the question myself a few years ago.
+1. I tend to follow a trial and error approach, I don't fully understand everything that I'm doing
+
+
+### To demonstrate in live coding session
+1. RStudio
+  - Environment tab top right, viewing objects
+  - History tab top right, previous commands
+  - Files, Packages, Help tabs lower right
+1. code completion in RStudio, tab for help about function args
+1. help with ?
+1. some common errors, e.g using "" when shouldn't and vice verca
+1. copy & pasting from the course html
+1. Help, cheatsheets ggplot2
+
+
+  
+
+
+
