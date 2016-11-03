@@ -166,6 +166,24 @@ tm_shape(World_and_dat) +
 
 ## ----eval=FALSE----------------------------------------------------------
 #  
+#  #install if not installed already
+#  if (require(ggmap)) install.packages("ggmap")
+#  library(ggmap)
+#  mymap <- get_map("thoyoyando, south africa")
+#  ggmap(mymap)
+#  
+#  mymap <- get_map("thoyoyando, south africa", maptype='satellite', zoom=15)
+#  ggmap(mymap)
+#  
+#  #creating a dataframe with a point in to add to the map
+#  tho_points <- data.frame(lon=c(30.48),lat=c(-22.88),class=c("house"))
+#  
+#  ggmap(mymap) +
+#    geom_point( aes(x = lon, y = lat, colour=class), data = tho_points)
+#  
+
+## ----eval=FALSE----------------------------------------------------------
+#  
 #  # a new package for getting world bank data
 #  install.packages("wbstats")
 #  # http://www.r-bloggers.com/new-r-package-to-access-world-bank-data/
