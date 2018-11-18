@@ -1,0 +1,59 @@
+---
+title: "A very brief intro to R package development - LSTM R user group "
+author: "andy south"
+date: "`r Sys.Date()`"
+#output: rmarkdown::html_vignette
+output: rmarkdown::pdf_document
+---
+
+
+# Some pointers to starting out with R package development.
+
+
+## Two main resources :
+
+A quick, start-from-scratch guide :
+https://r-mageddon.netlify.com/post/writing-an-r-package-from-scratch/
+
+Step by step, comprehensive reference :
+http://r-pkgs.had.co.nz/
+
+
+Be aware that new tools become available, so advice on good practice can change over time.
+
+
+## An R package :
+
+A. is the fundamental unit of shareable code in R
+B. is simply a collection of files with a particular structure
+C. can contain :
+   + code, functions that can be used from your own code
+   + documentation, describing how to use the code
+   + data
+   + tests (more advanced)
+
+
+## 3 'levels' of package :
+
+1. a personal package saved only on your local machine
+
+2. a package saved on github (no checks or rules for submission) 
+    + can be installed by anyone (if it works!)
+    
+3. a package submitted to CRAN
+    + has to go through checks
+    + can be installed by anyone
+    
+
+## packages to help you make packages
+
+### usethis
+automates creation of package components (relatively new)
+
+### devtools
+essential tools for package development
+
+### roxygen2
+allows you to create documentation files for packages by putting comments into the code files themselves. This is MUCH better than writing documentation files separately because if you do that the code and documentation INEVITABLY diverge.
+
+
