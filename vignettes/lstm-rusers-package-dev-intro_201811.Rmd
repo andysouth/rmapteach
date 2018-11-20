@@ -2,12 +2,9 @@
 title: "A very brief intro to R package development - LSTM R user group "
 author: "andy south"
 date: "`r Sys.Date()`"
-#output: rmarkdown::html_vignette
-output: rmarkdown::pdf_document
+output: rmarkdown::html_vignette
+#output: rmarkdown::pdf_document
 ---
-
-
-# Some pointers to starting out with R package development.
 
 
 ## Two main resources :
@@ -18,19 +15,18 @@ https://r-mageddon.netlify.com/post/writing-an-r-package-from-scratch/
 Step by step, comprehensive reference :
 http://r-pkgs.had.co.nz/
 
-
 Be aware that new tools become available, so advice on good practice can change over time.
 
 
 ## An R package :
 
-A. is the fundamental unit of shareable code in R
-B. is simply a collection of files with a particular structure
-C. can contain :
-   + code, functions that can be used from your own code
-   + documentation, describing how to use the code
-   + data
-   + tests (more advanced)
+* is the fundamental unit of shareable code in R
+* is simply a collection of files with a particular structure
+* can contain :
+    + code, functions that can be used from your own code
+    + documentation, describing how to use the code
+    + data
+    + tests (more advanced)
 
 
 ## 3 'levels' of package :
@@ -47,13 +43,13 @@ C. can contain :
 
 ## packages to help you make packages
 
-### usethis
+##### usethis
 automates creation of package components (relatively new)
 
-### devtools
+##### devtools
 essential tools for package development
 
-### roxygen2
+##### roxygen2
 allows you to create documentation files for packages by putting comments into the code files themselves. This is MUCH better than writing documentation files separately because if you do that the code and documentation INEVITABLY diverge.
 
 
