@@ -1,0 +1,73 @@
+---
+title: "Making maps in R, LSTM Parasitology Journal Club"
+author: "andy south"
+date: "`r Sys.Date()`"
+output: ioslides_presentation
+# just do it as html if that doesn't work
+#output: rmarkdown::html_vignette
+#output: rmarkdown::pdf_document
+---
+
+
+<!--  borrowing some bits from Robin -->
+<!-- https://github.com/geocompr/geocompkg/blob/master/slides/nurd.Rmd -->
+<!-- https://github.com/mtennekes/tmap-workshop -->
+
+```{r, eval=TRUE, include=FALSE}
+#set chunk options
+
+library(knitr)
+
+opts_chunk$set(warning=FALSE, message=FALSE)
+               #fig.width=8.5,
+               #fig.height=8.5)
+```
+
+
+## There are lots of options for making maps in R
+
+I'm just going to briefly introduce you to a few
+
+This is a great introductory online book if you want to take things further :
+
+https://geocompr.robinlovelace.net/
+
+
+## loading some map packages
+```{r}
+library(tmap)
+library(rnaturalearth)
+```
+
+---
+
+
+```{r}
+sf_uk <- ne_countries(country = 'united kingdom', type = 'map_units', 
+                      scale = 'medium', returnclass = 'sf')
+
+tm_shape(sf_uk) + tm_polygons('name') 
+
+```
+
+---
+
+```{r}
+data("World")
+
+tm_shape(World) + tm_polygons("HPI")
+```
+
+---
+
+```{r}
+tmap_mode("view")
+
+tm_shape(World) +
+    tm_polygons("HPI")
+```
+
+---
+
+
+
